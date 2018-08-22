@@ -1,0 +1,10 @@
+{
+  "title": "Device",
+  "welcome": "Welcome on IOTDB",
+  "description": "The service that helps you manage your IOT devices.",
+  "features": {
+    "title": "Leatests features",
+    "buybutton": "Buy now !",
+    "morebutton": "More info"
+  }
+}

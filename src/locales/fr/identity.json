@@ -1,0 +1,45 @@
+{
+	"page": {
+		"recover": {
+			"title": "Réinitialisation de mot de passe",
+			"information": "Vous avez oublié votre mot de passe ?",
+			"comment": "Pour changer changer votre mot de passe, saisissez votre adresse de messagerie associé à votre compte."
+		},
+		"reset": {
+			"title": "Réinitialisation",
+			"information": "Réinitialisation de mot de passe",
+			"comment": "Veuillez saisir votre nouveau mot de passe"
+		},
+		"signin": {
+			"title": "Connexion",
+			"information": "Veuillez saisir vos informations de connexion",
+			"link": "Réinitialiser votre mot de passe"
+		},
+		"signon": {
+			"title": "Inscription",
+			"information": "Créer votre compte"
+		}
+	},
+	"field": {
+		"firstname": {
+			"title": "Prénom",
+			"placeholder": "prénom"
+		},
+		"lastname": {
+			"title": "Nom",
+			"placeholder": "nom de famille"
+		},
+		"email": {
+			"title": "Adresse de messagerie",
+			"placeholder": "adresse de messagerie"
+		},
+		"password": {
+			"title": "Mot de passe",
+			"placeholder": "mot de passe"
+		},
+		"confirmation": {
+			"title": "Confirmation",
+			"placeholder": "Confirmation"
+		}
+	}
+}

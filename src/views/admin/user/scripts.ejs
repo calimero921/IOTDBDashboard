@@ -1,0 +1,143 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#usersTable").tablesorter({
+            sortList: [[0, 1]],
+            headers: {
+                3: {sorter: false}
+            }
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    $('#addItem').on('click', function () {
+        $("#editid").val("");
+        $("#editemail").val("");
+        $("#editpassword").val("");
+        $("#editfirstname").val("");
+        $("#editlastname").val("");
+        $("#editcreation").val("");
+        $("#editconnexion").val("");
+        $("#editlastconnexion").val("");
+        $("#editadmin").prop('checked', false);
+    });
+
+    function getUser(id) {
+        $.getJSON('/v1/account/' + id,
+            function (data) {
+                if (data.length > 0) {
+                    $("#editid").val(data[0].id);
+                    $("#editemail").val(data[0].email);
+                    $("#editpassword").val(data[0].password);
+                    $("#editfirstname").val(data[0].firstname);
+                    $("#editlastname").val(data[0].lastname);
+                    $("#editcreation").val(translateDate(data[0].creation_date));
+                    $("#editconnexion").val(translateDate(data[0].current_connexion_date));
+                    $("#editlastconnexion").val(translateDate(data[0].last_connexion_date));
+                    $("#editadmin").prop('checked', data[0].admin);
+                }
+            }
+        );
+    }
+
+    function delUser(email) {
+        var url = '/admin/user';
+        $("#dialog-text").text("Are you sure you want to delete this user ?");
+        $("#dialog-confirm").dialog({
+            title: "Confirmation",
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+                "Ok": function () {
+                    $(this).dialog("close");
+                    promiseDelUser(email)
+                        .then(function () {
+                            displayResult(true)
+                        })
+                        .catch(function (err) {
+                            displayResult(false, "", err)
+                        });
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    }
+
+    function submitForm() {
+        promiseSetUser()
+            .then(function () {
+                displayResult(true)
+            })
+            .catch(function (err) {
+                displayResult(false, "", err)
+            });
+    }
+
+    function resetPassword() {
+        var url = '/admin/user';
+        var login = $("#editemail").val();
+        $.getJSON('/v1/account/recover/' + login,
+            function (data) {
+                if (typeof data === 'undefined') {
+                    displayResult(false, "", "error while verifying your credentials");
+                } else {
+                    switch (data.code) {
+                        case "250":
+                            window.location.assign(url);
+                            break;
+                        default:
+                            displayResult(false, "", "error sending password reset link, please check your email");
+                            break;
+                    }
+                }
+            }
+        );
+    }
+
+    function promiseSetUser() {
+        return new Promise(function (resolve, reject) {
+            try {
+                var data = {};
+                data.id = $("#editid").val();
+                data.email = $("#editemail").val();
+                data.firstname = $("#editfirstname").val();
+                data.lastname = $("#editlastname").val();
+                data.admin = $("#editadmin").prop("checked");
+                var jqxhr = $.post('/v1/account', JSON.stringify(data))
+                    .done(function (datas) {
+                        resolve(datas);
+                    })
+                    .fail(function (error) {
+                        reject(error);
+                    });
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+
+    function promiseDelUser(id) {
+        return new Promise(function (resolve, reject) {
+            try {
+                $.ajax({url: '/v1/account/' + id, type: 'DELETE'})
+                    .done(function () {
+                        resolve('Ok')
+                    })
+                    .fail(function () {
+                        reject('Error calling API')
+                    });
+            } catch (err) {
+                reject(err)
+            }
+        });
+    }
+
+    function translateDate(timestamp) {
+        var date = new Date(timestamp);
+        return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    }
+</script>
+<%- include('../../include/displayresult'); %>

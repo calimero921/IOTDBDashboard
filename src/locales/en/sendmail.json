@@ -1,0 +1,12 @@
+{
+	"message": {
+		"recover": {
+			"object": "Reset your [[servername]] password",
+			"text": "Please click on the above button to change your password in three hours.\nIf it does not work, please paste the link into your web browser's address field to complete the registration process.\nLink [[link]]",
+			"html": "Please click on the above button to change your password in three hours.<br>If it does not work, please paste the link into your web browser's address field to complete the registration process.<br>Link: <a href=\"[[link]]\">[[link]]</a>"
+		}
+	},
+	"error": {
+		"250": "Message sent"
+	}
+}

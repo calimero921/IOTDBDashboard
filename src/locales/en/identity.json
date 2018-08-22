@@ -1,0 +1,45 @@
+{
+	"page": {
+		"recover": {
+			"title": "Recover password",
+			"information": "Forget your password ?",
+			"comment": "To change your password, please enter the email address currently associated with your account."
+		},
+		"reset": {
+			"title": "Reset password",
+			"information": "Reset password",
+			"comment": "Please enter your new password."
+		},
+		"signin": {
+			"title": "Signin",
+			"information": "Please enter your credentials",
+			"link": "Recover your password"
+		},
+		"signon": {
+			"title": "Signon",
+			"information": "Create your account"
+		}
+	},
+	"field": {
+		"firstname": {
+			"title": "Firstname",
+			"placeholder": "firstname"
+		},
+		"lastname": {
+			"title": "Lastname",
+			"placeholder": "lastname"
+		},
+		"email": {
+			"title": "Email",
+			"placeholder": "email"
+		},
+		"password": {
+			"title": "Password",
+			"placeholder": "password"
+		},
+		"confirmation": {
+			"title": "Confirmation",
+			"placeholder": "confirmation"
+		}
+	}
+}

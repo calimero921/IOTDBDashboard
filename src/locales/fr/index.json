@@ -1,0 +1,10 @@
+{
+	"title": "Accueil",
+	"welcome": "Bienvenue sur IOTDB",
+	"description": "Le service qui va vous aider à gérer vous objets connectés",
+	"features": {
+		"title": "Dernières nouveautés",
+		"buybutton":"Acheter !",
+		"morebutton": "Plus d'info"
+	}
+}

@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    function displayResult(done, url, error) {
+        // console.log('display error', error)
+        if (done === true) {
+            if (typeof error !== 'undefined') {
+                if (error.length > 0) {
+                    $("#dialog-text").text(error);
+                    $("#dialog-confirm").dialog({
+                        title: "Confrmation",
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            Ok: function () {
+                                $(this).dialog("close");
+                            },
+                        },
+                        close: function () {
+                            redirect(url);
+                        }
+                    });
+                } else {
+                    redirect(url);
+                }
+            } else {
+                redirect(url);
+            }
+        } else {
+            var message = "";
+            if (typeof error.status === 'undefined') {
+                message = "500 " + error;
+            } else {
+                if (error.status !== 0) message = error.status + " " + error.responseText;
+            }
+            if (message.length > 0) {
+                $("#dialog-text").text(message);
+                $("#dialog-confirm").dialog({
+                    title: "Error",
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    function redirect(url) {
+        if (typeof url === 'undefined') {
+            window.location.reload(true);
+        } else {
+            window.location.assign(url);
+        }
+    }
+</script>

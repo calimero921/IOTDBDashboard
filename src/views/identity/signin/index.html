@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<%- include('../../include/head'); %>
+<body>
+<%current_menu='none'%>
+<%-include('../../include/topmenu'); %>
+
+<main class="container" role="main">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row" id="infos">
+                <span><h3 class="info" id="message"><%-t('identity:page.signin.information')%></h3></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">&nbsp</div>
+        <div class="col-md-4">
+            <form role="form" id="userform" name="userform" action="#">
+                <div class="form-group">
+                    <label for="lemail"><%-t('identity:field.email.title')%></label>
+                    <input type="email" class="form-control has-error" id="lemail"
+                           placeholder="<%-t('identity:field.email.placeholder')%>" required>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="pwd"><%-t('identity:field.password.title')%></label>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" id="pwd" placeholder="<%-t('identity:field.password.placeholder')%>" required>
+                </div>
+                <div class="row">
+                <div class="col-md-12 text-left">
+                    <a href="/recover"><%-t('identity:page.signin.link')%></a>
+                </div>
+                </div>
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-default btn btn-highlight-1 btn-block" onclick="submitForm()"><%-t('common:submit')%></button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">&nbsp</div>
+    </div>
+    <hr>
+</main> <!-- /container -->
+<%-include('../../include/footer');%>
+<%-include('../../include/displaydialog');%>
+<%-include('./scripts'); %>
+</body>
+</html>

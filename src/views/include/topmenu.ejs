@@ -1,0 +1,53 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="brand navbar-brand" href="/">IOTDB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <% if (typeof user !== 'undefined' && user.active) { %>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" href="/documentation"><%- t('common:menu.docs') %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" href="/device"><%- t('common:menu.device') %></a>
+            </li>
+            <% } %>
+        </ul>
+        <ul class="navbar-nav my-2 my-lg-0">
+            <% if (typeof user === 'undefined') { %>
+            <li class="nav-item">
+                <a class="btn btn-primary btn-sm" href="/auth" role="button"><%- t('common:signin') %></a>
+            </li>
+            <% } else { %>
+                <% if (!user.active) { %>
+                <li class="nav-item">
+                    <a class="nav-link" id="UserDesactivated" aria-haspopup="true" aria-expanded="false"><%= user.firstname %> <%= user.lastname %> (<%- t('common:desactivated') %>)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary btn-sm" href="/logout" role="button"><%- t('common:signout') %></a>
+                </li>
+                <% } else { %>
+                    <% if(user.admin) { %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="AdminDropdownMenu" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><%- t('common:menu.admin.title') %></a>
+                        <div class="dropdown-menu" aria-labelledby="AdminDropdownMenu">
+                            <a class="dropdown-item" href="/admin/user"><%- t('common:menu.admin.sub.user') %></a>
+                        </div>
+                    </li>
+                    <% } %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="UserDropdownMenu" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><%= user.firstname %> <%= user.lastname %></a>
+                        <div class="dropdown-menu" aria-labelledby="UserDropdownMenu">
+                            <a class="dropdown-item" href="/logout"><%- t('common:menu.user.sub.logout') %></a>
+                        </div>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+    </div>
+</nav>

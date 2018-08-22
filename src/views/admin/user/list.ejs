@@ -1,0 +1,36 @@
+<h3 id="users" class="h3">User management</h3>
+<div class="row">
+    <div class="col-md-4">&nbsp;</div>
+    <div class="col-md-4">&nbsp;</div>
+    <div class="col-md-4">
+        <button id="addItem" type="button" class="btn btn-block btn-primary" autocomplete="off">Add</button>
+    </div>
+</div>
+<table id="usersTable" class="table table-hover tablesorter table-word-wrap">
+    <thead>
+    <tr>
+        <th scope="col" class="header col-md-3"><a href="#">Firstname <span class="sr-only"> triable</span></a></th>
+        <th scope="col" class="header col-md-3"><a href="#">Lastname <span class="sr-only"> triable</span></a></th>
+        <th scope="col" class="header col-md-4"><a href="#">Email <span class="sr-only"> triable</span></a></th>
+        <th scope="col" class="header col-md-2"><a href="#">Action <span class="sr-only"> triable</span></a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%if(users.length > 0) {%>
+    <%for(var i = 0; i < users.length; i++) {%>
+    <tr>
+        <td><%=users[i].firstname%></td>
+        <td><%=users[i].lastname%></td>
+        <td class="td-word-wrap"><%=users[i].email%></td>
+        <td class="text-center">
+            <a role="button" onclick="getUser('<%=users[i].id%>')"><span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+            <% if(user.admin === true) {%>
+            <span class="" aria-hidden="true">&nbsp;</span>
+            <a role="button" onclick="delUser('<%=users[i].id%>')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            <%}%>
+        </td>
+    </tr>
+    <% }%>
+    <% }%>
+    </tbody>
+</table>

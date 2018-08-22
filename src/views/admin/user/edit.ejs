@@ -1,0 +1,52 @@
+<h3 class="h3">User</h3>
+<form id="userform" name="userform" action="#">
+    <div class="row">
+        <label for="editid">ID</label>
+        <input id="editid" name="editid" type="email" class="form-control" placeholder="User's ID" data-toggle="tooltip" title="ID" disabled>
+    </div>
+    <div class="row">
+        <label for="editemail">Email</label>
+        <input id="editemail" name="editemail" type="email" class="form-control" placeholder="User's email"
+               data-toggle="tooltip" title="Email" required>
+    </div>
+    <div class="row">
+        <label for="editfirstname">Firstname</label>
+        <input id="editfirstname" name="editfirstname" type="text" class="form-control" placeholder="User's firstname"
+               data-toggle="tooltip" title="Firstname" required>
+    </div>
+    <div class="row">
+        <label for="editlastname">Lastname</label>
+        <input id="editlastname" name="editlastname" type="text" class="form-control" placeholder="User's lastname"
+               data-toggle="tooltip" title="Lastname%>" required>
+    </div>
+    <div class="row">
+        <label for="editcreation">Creation</label>
+        <input id="editcreation" name="editcreation" type="text" class="form-control" data-toggle="tooltip" title="Creation"  disabled>
+    </div>
+    <div class="row">
+        <label for="editconnexion">Current connexion</label>
+        <input id="editconnexion" name="editconnexion" type="text" class="form-control" data-toggle="tooltip" title="Current connexion"  disabled>
+    </div>
+    <div class="row">
+        <label for="editlastconnexion">Last connexion</label>
+        <input id="editlastconnexion" name="editlastconnexion" type="text" class="form-control" data-toggle="tooltip" title="Last connexion"  disabled>
+    </div>
+    <div class="row text-center">
+        <label for="editadmin">Admin</label>
+        <input id="editadmin" name="editadmin" type="checkbox" class="form-control" data-toggle="tooltip" title="Admin">
+    </div>
+    <div class="row"><br></div>
+    <div class="row">
+        <div class="col-md-4">&nbsp;</div>
+        <div class="col-md-4">
+            <button id="submit" name="submit" type="button" class="btn btn-block btn-primary" onclick="submitForm()">
+                Submit
+            </button>
+        </div>
+        <div class="col-md-4">
+            <button id="reset" name="reset" type="button" class="btn btn-block btn-primary" onclick="resetPassword()">
+                reset password
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function submitForm() {
+        var result;
+        var password = $("#pwd").prop("value");
+        var login = $("#lemail").prop("value");
+
+        $.getJSON('/v1/account/check/' + login + '/' + password,
+            function(data) {
+                if(typeof data === 'undefined') {
+                    displayResult(false, "", "error while verifying your credentials");
+                } else {
+                    if(!data.checked) {
+                        displayResult(false, "", "wrong credentials please, check your email/password");
+                    } else {
+                        window.location.assign("/");
+                    }
+                }
+            }
+        );
+    }
+</script>
+<%-include('../../include/displayresult');%>

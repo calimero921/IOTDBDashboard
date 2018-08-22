@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#userform').on('submit',function(ev) {
+            var url = '/';
+            promiseSetUser()
+                .then(function() {displayResult(true, url)})
+                .catch(function(err) {displayResult(false, "", err)});
+            ev.preventDefault();
+        })
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function promiseSetUser() {
+        return new Promise(function(resolve, reject) {
+            try {
+                var pwd1 = $("#pwd1").val();
+                var pwd2 = $("#pwd2").val();
+                if(!(pwd1==pwd2)) throw "Passwords are not identical"
+
+                var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+                if(!pwd1.match(passw)) throw "Password do not comply with rules (6 to 20 characters, At least one Uppercase, one lowercase and one number)"
+
+                var data = {};
+                data.password = pwd1;
+                var pathArray = window.location.pathname.split('/');
+                if(pathArray.length !== 4) throw "wrong parameters in Urls"
+                data.email = pathArray[2];
+                data.token = $("#token").val();
+
+                var jqxhr = $.post('/v1/account/password', JSON.stringify(data))
+                    .done(function(datas) {resolve(datas)})
+                    .fail(function(error) {reject(error)});
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
+</script>
+<%-include('../../include/displayresult');%>

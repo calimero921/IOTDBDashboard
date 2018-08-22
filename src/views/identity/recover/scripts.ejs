@@ -1,0 +1,28 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function submitForm() {
+        var result;
+        var login = $("#lemail").val();
+
+        $.getJSON('/v1/account/recover/' + login,
+            function(data) {
+                if(typeof data === 'undefined') {
+                    displayResult(false, "", "error while verifying your credentials");
+                } else {
+                    switch(data.code) {
+                        case "250":
+                            window.location.assign("/");
+                            break;
+                        default:
+                            displayResult(false, "", "error sending password reset link, please check your email");
+                            break;
+                    }
+                }
+            }
+        );
+    }
+</script>
+<%-include('../../include/displayresult');%>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<%- include('../include/head'); %>
+<body>
+<%current_menu='none'%>
+<%-include('../include/topmenu'); %>
+
+<main class="container" role="main">
+    <div class="row">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="col-md-12">
+            <div class="row" id="infos">
+                <span><h3 class="info" id="message">Error : <%=message%></h3></span>
+            </div>
+        </div>
+    </div>
+    <hr>
+</main> <!-- /container -->
+<%-include('../include/footer');%>
+<%-include('./scripts'); %>
+</body>
+</html>

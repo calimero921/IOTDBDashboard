@@ -1,0 +1,12 @@
+{
+	"message": {
+		"recover": {
+			"object": "Reinitialisez votre mot de passe [[servername]]",
+			"text": "Clicker sur le lien ci dessous pour changer votre mot de passe durant les trois prochaines heures.\nSi cela ne fonctionne pas, copier le lien dans la barre de navigation de votre navigateur.\nLink: [[link]]",
+			"html": "Clicker sur le lien ci dessous pour changer votre mot de passe durant les trois prochaines heures.<br>Si cela ne fonctionne pas, copier le lien dans la barre de navigation de votre navigateur.<br>Link: <a href=\"[[link]]\">[[link]]</a>"
+		}
+	},
+	"error": {
+		"250": "Message envoyé"
+	}
+}

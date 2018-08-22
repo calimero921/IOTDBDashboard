@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<%- include('../include/head'); %>
+<body style="background-image: url('images/iot.png'); background-color: white; background-size: 640px 360px; background-position: center; background-repeat: no-repeat">
+<%current_menu='accueil'%>
+<%-include('../include/topmenu'); %>
+
+<main class="container" role="main">
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="jumbotron hero-spacer">
+        <h1><%-t('index:welcome')%></h1>
+        <p><%-t('index:description')%></p>
+    </div>
+    <% if(typeof features !== 'undefined') {%>
+    <% let counter = Object.keys(features).length %>
+    <% if(counter > 0) {%>
+    <div class="row">
+        <div class="col-md-12">
+            <h3><%-t('index:features.title')%></h3>
+        </div>
+    </div>
+    <div class="row text-center">
+        <% for(let i = 0; i < counter; i++) {%>
+        <div class="col-lg-<%- 12/counter %> col-md-<%- 24/counter %> hero-feature">
+            <div class="thumbnail">
+                <img src="images/icons/small-n-flat/72/cloud.png" alt="">
+                <div class="caption"><%- features[i].comment%></div>
+                <h3><%- features[i].title%></h3>
+                <p><%- features[i].description.line1%></p>
+                <p><%- features[i].description.line2%></p>
+                <a href="#" class="btn btn-primary"><%-t('index:features.buybutton')%></a>
+                <a href="#" class="btn btn-primary"><%-t('index:features.morebutton')%></a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <% } %>
+    <% } %>
+    <hr>
+</main> <!-- /container -->
+<%-include('../include/footer');%>
+<%-include('./scripts'); %>
+</body>
+</html>

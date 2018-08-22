@@ -1,0 +1,14 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <% if(typeof user !== 'undefined') { %>
+                <p class="text-left"><%-t('common:lastconnexion')%>&nbsp;<%- user.last_connexion_date %></p>
+                <% } %>
+            </div>
+            <div class="col-md-6">
+                <p class="text-right">Copyright &copy; Emmanuel David <%= new Date().getFullYear() %></p>
+            </div>
+        </div>
+    </div>
+</footer>

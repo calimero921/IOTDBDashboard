@@ -1,0 +1,87 @@
+<html>
+<head>
+    <link rel="stylesheet" href="styles/codemirror.css">
+    <link rel="stylesheet" href="styles/codemirror-neo.css">
+    <link rel="stylesheet" href="styles/cy2neo.css">
+    <link rel="stylesheet" href="styles/neod3.css">
+    <link rel="stylesheet" href="styles/datatable.css">
+    <link rel="stylesheet" href="styles/vendor.css"> <!-- bootstrap-->
+    <link rel="stylesheet" href="styles/sweet-alert.css">
+    <link rel="stylesheet" href="styles/gh-fork-ribbon.css">
+    <title>Cy2NeoD3 - Tiny Neo4j Cypher Workbench</title>
+</head>
+<body>
+<div>
+    <input class="form-control" type="url" id="neo4jUrl" value="https://localhost:7473"/><br/>
+    <input class="form-control" type="text" size="8" id="neo4jUser" value="neo4j"/>
+    <input class="form-control" type="password" size="8" id="neo4jPass" placeholder="password" value="neo4j"/><br/>
+    <textarea name="cypher" id="cypher" rows="4" cols="120" data-lang="cypher" class="code form-control">
+    </textarea>
+    <a href="#" title="Execute" id="execute"><i class="fa fa-play-circle-o"></i></a>
+</div>
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#graph" aria-controls="home" role="tab" data-toggle="tab">Graph</a></li>
+        <li role="presentation"><a href="#table" aria-controls="table" role="tab" data-toggle="tab">Table</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="graph">
+            <div class="tab-pane active" id="graph">&nbsp;</div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="table">
+            <div id="datatable"></div>
+        </div>
+    </div>
+</div>
+
+<script src="scripts/codemirror.js"></script>
+<script src="scripts/codemirror-cypher.js"></script>
+<script src="scripts/vendor.js"></script>
+<script src="scripts/sweet-alert.min.js"></script>
+<script src="scripts/neod3.js"></script>
+<script src="scripts/neod3-visualization.js"></script>
+<script src="scripts/neo4d3.js"></script>
+<script src="scripts/cy2neod3.js"></script>
+<script src="scripts/jquery.dataTables.min.js"></script>
+<script src="scripts/cypher.datatable.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //todo dynamic configuration
+        var config = {}
+        var software = getUrlParameter('software');
+        console.log("software", software);
+
+//        $("#cypher").val('MATCH (n:VNFc {name:"' + software + '"}) WITH n MATCH (u)-[d:DEFINES]->(n) WITH u, d, n MATCH (i)-[in:INSTANCIATES]->(n) MATCH (a)-[c:COMPOSED_BY]->(n) MATCH (e)-[ed:EDITS]->(n) RETURN n, u, d, i, in, a, e, ed');
+        $("#cypher").val('MATCH (n:VNFc {name:"' + software + '"}) WITH n MATCH (u)-[d:DEFINES]->(n) WITH u, d, n MATCH (i)-[in:INSTANCIATES]->(n) RETURN n, u, d, i, in');
+
+        var connection = function () {
+            return {url: $("#neo4jUrl").val(), user: $("#neo4jUser").val(), pass: $("#neo4jPass").val()};
+        }
+        new Cy2NeoD3(config, "graph", "datatable", "cypher", "execute", connection, true);
+        $("#execute").trigger("click");
+    });
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+</script>
+</body>
+</html>

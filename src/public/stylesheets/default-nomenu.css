@@ -1,0 +1,120 @@
+body {
+    /*padding-top: 60px;*/
+    /*padding-bottom: 40px;*/
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#infos {
+    margin-left: 12px;
+    text-align: center;
+}
+
+.info-conformite {
+    background: #c7f1ff;
+}
+
+.info-risque {
+    background: #affff7;
+}
+
+.info-software {
+    background: #ecdfe5;
+}
+
+.info-instances {
+    background: #ffecc6;
+}
+
+.nospace {
+    margin-left: 0 !important;
+}
+
+#iframe {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 20px;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    margin-right: 30px;
+    padding-top: 40px;
+}
+
+table thead tr th a, table thead tr th a:hover {
+    color: #08c;
+}
+
+.big {
+    font-weight: bold;
+}
+
+.center-column {
+    padding-top: 20px;
+    padding-left: 260px;
+    padding-right: 20px;
+
+}
+.left-column {
+    width: 200px;
+    background: #EFEFEF;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin: 0;
+    height: 700px;
+    position: fixed;
+    top:0;
+    left:0;
+}
+
+.zone {
+    width: 200px;
+    height: 200px;
+    display: block;
+    float: left;
+    background: #EFEFEF;
+    margin: 20px;
+    padding: 10px 20px;
+}
+
+.needed-licences strong, .costs strong {
+    font-size: 1.4em;
+}
+
+.needed-licences, .costs {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.needed-licences {
+
+}
+
+.costs {
+
+}
+
+h3 {
+    font-size: 24.5px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 31.5px;
+    font-weight: bold;
+}
+
+.nav-tabs {
+    margin-bottom: 20px;
+}
+
+* {
+    box-sizing: inherit;
+}

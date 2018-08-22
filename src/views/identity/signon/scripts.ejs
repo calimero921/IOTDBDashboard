@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+    function submitForm() {
+        console.log('submit form');
+        promiseSetUser()
+            .then(function () {
+                displayResult(true)
+            })
+            .catch(function (error) {
+                displayResult(false, "", error)
+            });
+    }
+
+    function promiseSetUser() {
+        console.log('promise setUser');
+        return new Promise(function (resolve, reject) {
+            try {
+                var password = $("#editpassword").prop("value");
+                var passwordconfirmation = $("#confirmationpassword").prop("value");
+
+                if (password === passwordconfirmation) {
+                    var data = {};
+                    data.firstname = $("#editfirstname").val();
+                    data.lastname = $("#editlastname").val();
+                    data.email = $("#editemail").val();
+                    data.password = $("#editpassword").val();
+                    var jqxhr = $.post('/v1/account', JSON.stringify(data))
+                        .done(function (datas) {
+                            resolve(datas);
+                        })
+                        .fail(function (error) {
+                            reject(error);
+                        });
+                } else {
+                    reject({error: {status: '500', responseText: 'Passwords are not identical'}});
+                }
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+</script>
+<%- include('../../include/displayresult'); %>

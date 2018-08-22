@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<%- include('../../include/head'); %>
+<body>
+<%current_menu='accueil'%>
+<%-include('../../include/topmenu'); %>
+
+<main class="container" role="main">
+    <div class="row">
+        <div class="col-md-6 col" id="list">
+            <%-include('./list')%>
+        </div>
+        <div class="col-md-6 col" id="edit">
+            <%-include('./edit')%>
+        </div>
+    </div>
+    <hr>
+</main> <!-- /container -->
+<%-include('../../include/footer');%>
+<%-include('../../include/displaydialog');%>
+<%-include('./scripts'); %>
+</body>
+</html>

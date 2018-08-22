@@ -1,0 +1,49 @@
+{
+	"name": "iotdb",
+	"version": "0.0.1",
+	"description": "IOT Management platform",
+	"private": true,
+	"license": "Apache-2.0",
+	"bugs": {
+		"url": "https://github.com/calimero921/IOTDB/issues",
+		"email": "calimero921@gmail.com"
+	},
+	"author": {
+		"name": "Emmanuel David",
+		"email": "calimero921@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/calimero921/IOTDB.git"
+	},
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies": {
+		"ajv": "^6.1.1",
+		"ajv-async": "^1.0.1",
+		"body-parser": "~1.18.2",
+		"connect-mongodb-session": "^2.0.0",
+		"cookie-parser": "~1.4.3",
+		"ejs": "~2.5.7",
+		"express": "^4.16.3",
+		"express-session": "^1.15.6",
+		"i18next": "^10.5.1",
+		"i18next-express-middleware": "^1.1.1",
+		"i18next-node-fs-backend": "^1.0.0",
+		"http-errors": "~1.6.3",
+		"jsonwebtoken": "^8.3.0",
+		"keycloak-connect": "^4.1.0",
+		"moment": "^2.20.1",
+		"mongodb": "^3.0.1",
+		"morgan": "~1.9.0",
+		"mqtt": "^2.15.3",
+		"nodemailer": "^4.6.2",
+		"serve-favicon": "^2.4.5",
+		"uuid": "^3.2.1"
+	},
+	"engines": {
+		"node": ">=8.9.1",
+		"npm": ">=4.6.1"
+	}
+}
