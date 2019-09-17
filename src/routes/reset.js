@@ -1,8 +1,8 @@
 const Log4n = require('../utils/log4n');
 const responseError = require('../utils/responseError.js');
 const errorparsing = require('../utils/errorparsing.js');
-const accountGetByToken = require('../models/api/account/getByToken.js');
-const accountSetToken = require('../models/api/account/setToken.js');
+const accountGetByToken = require('../models/database/account/getByToken.js');
+const accountSetToken = require('../models/database/account/setToken.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/reset');

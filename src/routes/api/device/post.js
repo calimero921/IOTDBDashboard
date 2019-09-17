@@ -1,7 +1,7 @@
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
 const decodePost = require('../../../utils/decodePost.js');
-const set = require('../../../models/api/device/set.js');
+const set = require('../../../models/database/device/set.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/device/post');

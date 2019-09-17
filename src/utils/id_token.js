@@ -15,7 +15,7 @@ module.exports = function (req, res) {
             // log4n.object(id_token, 'id_token');
 
             let decodedToken = jwt.decode(id_token);
-            log4n.object(decodedToken, 'decodedToken');
+            // log4n.object(decodedToken, 'decodedToken');
             resolve(decodedToken);
         } else {
             log4n.debug('no token found to identify user.');

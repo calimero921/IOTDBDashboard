@@ -4,7 +4,7 @@
 
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
-const getUsersBySession = require('../../../models/api/users/getBySession.js');
+const getUsersBySession = require('../../../models/database/users/getBySession.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/users/getBySession');

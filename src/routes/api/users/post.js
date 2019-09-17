@@ -14,8 +14,8 @@ const decodePost = require('../../../utils/decodePost.js');
 const responseError = require('../../../utils/responseError.js');
 const smtp = require('../../../config/smtp.js');
 const server = require('../../../config/server.js');
-const setUser = require('../../../models/api/users/set.js');
-const initPassword = require('../../../models/api/users/init.js');
+const setUser = require('../../../models/database/users/set.js');
+const initPassword = require('../../../models/database/users/init.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/router/api/users/post');

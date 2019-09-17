@@ -1,6 +1,6 @@
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
-const remove = require('../../../models/api/device/delete.js');
+const remove = require('../../../models/database/device/delete.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/device/delete');

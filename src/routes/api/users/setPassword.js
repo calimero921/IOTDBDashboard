@@ -12,8 +12,8 @@ const Log4n = require('../../../utils/log4n.js');
 const getConfig = require('../../../utils/getconfig.js');
 const decodePost = require('../../../utils/decodePost.js');
 const responseError = require('../../../utils/responseError.js');
-const getUsersByEmail = require('../../../models/api/users/getByEmail.js');
-const setUsersPassword = require('../../../models/api/users/setPassword.js');
+const getUsersByEmail = require('../../../models/database/users/getByEmail.js');
+const setUsersPassword = require('../../../models/database/users/setPassword.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/router/api/users/setPassword');

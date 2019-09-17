@@ -1,9 +1,9 @@
 const Log4n = require('../../utils/log4n.js');
 const errorparsing = require('../../utils/errorparsing.js');
 const configMQTT = require('../../config/mqtt.js');
-const get = require('../../models/api/device/get.js');
-const set = require('../../models/api/device/set.js');
-const update = require('../../models/api/device/patch.js');
+const get = require('../../models/database/device/get.js');
+const set = require('../../models/database/device/set.js');
+const update = require('../../models/database/device/patch.js');
 
 module.exports = function (content) {
     const log4n = new Log4n('/routes/api/device/register');

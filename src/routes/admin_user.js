@@ -1,12 +1,20 @@
 const Log4n = require('../utils/log4n');
 const getConfig = require('../utils/getconfig.js');
 const getAuthorized = require('../utils/getauthorized.js');
-const accountGet = require('../models/api/account/get.js');
+const accountGet = require('../models/api/account/getAll.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/amin_user');
 
-    var config = {title: 'Error'};
+    let accessToken = {token:'', content:{}};
+    if (typeof req.kauth !== 'undefined') {
+        if (typeof req.kauth.grant !== 'undefined') {
+            accessToken = req.kauth.grant.access_token;
+        }
+    }
+    // log4n.object(accessToken.token, "access token");
+    // log4n.object(accessToken.content, "access token");
+    let config = {title: 'Error'};
 
     try {
         getConfig(req, res, true)
@@ -16,7 +24,7 @@ module.exports = function (req, res) {
                 config = data;
                 config.title = 'Users management';
 
-                return accountGet({}, 0, 0, true);
+                return accountGet({}, 0, 0, accessToken.token, true);
             })
             .then(data => {
                 // log4n.object(data, 'users');
@@ -25,7 +33,7 @@ module.exports = function (req, res) {
                 } else {
                     config.users = data;
                 }
-                log4n.object(config, 'config');
+                // log4n.object(config, 'config');
                 let rights = {
                     private: true,
                     admin: true,

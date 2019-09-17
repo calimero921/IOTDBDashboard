@@ -1,7 +1,7 @@
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
-const accountGetByEmail = require('../../../models/api/account/getByEmail.js');
-const accountDelete = require('../../../models/api/account/delete.js');
+const accountGetByEmail = require('../../../models/database/account/getByEmail.js');
+const accountDelete = require('../../../models/database/account/delete.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/account/delete');

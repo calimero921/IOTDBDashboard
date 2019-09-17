@@ -1,6 +1,6 @@
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
-const accountCheck = require('../../../models/api/account/check.js');
+const accountCheck = require('../../../models/database/account/check.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/account/check');

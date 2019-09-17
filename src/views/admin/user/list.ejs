@@ -23,10 +23,10 @@
         <td><%=users[i].lastname%></td>
         <td class="td-word-wrap"><%=users[i].email%></td>
         <td class="text-center">
-            <a role="button" onclick="getUser('<%=users[i].id%>')"><span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+            <a role="button" onclick="getUser('<%=users[i].id%>')"><img src="/images/icons/glyphicons/glyphicons-37-file.png" height="16"></a>
             <% if(user.admin === true) {%>
             <span class="" aria-hidden="true">&nbsp;</span>
-            <a role="button" onclick="delUser('<%=users[i].id%>')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+            <a role="button" onclick="delUser('<%=users[i].id%>')"><img src="/images/icons/glyphicons/glyphicons-17-bin.png" height="16"></a>
             <%}%>
         </td>
     </tr>

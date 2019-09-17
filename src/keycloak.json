@@ -3,7 +3,11 @@
   "auth-server-url": "http://localhost:8080/auth",
   "ssl-required": "none",
   "resource": "IOTDBDashboard",
-  "public-client": true,
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "96f43d57-479b-45f4-8158-8c8a94d1856a"
+  },
   "use-resource-role-mappings": true,
-  "confidential-port": 0
+  "confidential-port": 0,
+  "policy-enforcer": {}
 }

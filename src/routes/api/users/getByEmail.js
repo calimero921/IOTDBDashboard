@@ -4,7 +4,7 @@
 
 const Log4n = require('../../../utils/log4n.js');
 const responseError = require('../../../utils/responseError.js');
-const getUsersByEmail = require('../../../models/api/users/getByEmail.js');
+const getUsersByEmail = require('../../../models/database/users/getByEmail.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/routes/api/users/getByEmail');

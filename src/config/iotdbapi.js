@@ -1,4 +1,7 @@
 module.exports = {
     name: 'IOTDBAPI',
-    url: "https://localhost:3443",
+    hostName: 'localhost',
+    hostPort: 3443,
+    hostPath: '/1.0.0',
+    cert: 'cert.pem'
 };

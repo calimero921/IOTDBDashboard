@@ -11,6 +11,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const favicon = require('serve-favicon');
 
 const Keycloak = require('keycloak-connect');
 const session = require('express-session');
@@ -84,6 +85,8 @@ app.set('trust proxy', 1);
 require('./routes/main')(app, keycloak);
 
 // uncomment after placing your favicon in /public
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+
 log4n.debug("View engine setup");
 app.use(logger('dev'));
 app.set('views', path.join(__dirname, 'views'));

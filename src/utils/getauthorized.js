@@ -3,7 +3,7 @@ const id_token = require('./id_token.js');
 const Log4n = require('./log4n.js');
 const errorparsing = require('./errorparsing.js');
 const getUserById = require('../models/api/account/getById.js');
-const setUser = require('../models/api/account/set.js');
+const setUser = require('../models/database/account/set.js');
 
 module.exports = function (config, rights) {
     const log4n = new Log4n('/utils/getauthorized');

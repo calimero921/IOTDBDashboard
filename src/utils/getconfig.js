@@ -3,10 +3,18 @@ const id_token = require('./id_token.js');
 const Log4n = require('./log4n.js');
 const errorparsing = require('./errorparsing.js');
 const getUserById = require('../models/api/account/getById.js');
-const setUser = require('../models/api/account/set.js');
+const setUser = require('../models/database/account/set.js');
 
 module.exports = function (req, res) {
     const log4n = new Log4n('/utils/getconfig');
+    let accessToken = {token:'', content:{}};
+    if (typeof req.kauth !== 'undefined') {
+        if (typeof req.kauth.grant !== 'undefined') {
+            accessToken = req.kauth.grant.access_token;
+        }
+    }
+    // log4n.object(accessToken.token, "access token");
+    // log4n.object(accessToken.content, "access token");
 
     return new Promise((resolve, reject) => {
         let config = {};
@@ -19,7 +27,11 @@ module.exports = function (req, res) {
                         return errorparsing({error_code: 401, error_message: 'Unauthorized'});
                     } else {
                         userToken = idToken;
-                        return getUserById(userToken.sub, true);
+                        if (typeof accessToken === 'undefined') {
+                            return errorparsing({error_code: 401, error_message: 'Unauthorized'});
+                        } else {
+                            return getUserById(userToken.sub, accessToken.token, true);
+                        }
                     }
                 })
                 .then(userInfo => {

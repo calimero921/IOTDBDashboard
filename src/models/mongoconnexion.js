@@ -10,7 +10,10 @@ module.exports = function () {
         if (global.mongodbConnexion === null) {
             let url = mongodbconf.url;
             let mongoClient = mongodb.MongoClient;
-            let option = {useNewUrlParser: true};
+            let option = {
+                useUnifiedTopology: true,
+                useNewUrlParser: true
+            };
 
             mongoClient.connect(url, option)
                 .then(client => {
