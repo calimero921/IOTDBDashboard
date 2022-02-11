@@ -20,7 +20,7 @@
 		"start": "node app.js"
 	},
 	"dependencies": {
-		"ajv": "^6.10.2",
+		"ajv": "^6.12.3",
 		"ajv-async": "^1.0.1",
 		"body-parser": "^1.19.0",
 		"connect-mongodb-session": "^2.2.0",
